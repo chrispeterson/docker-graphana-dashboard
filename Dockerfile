@@ -14,7 +14,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN ln -s /app/config.js /conf/config.js
+RUN ln -s /conf/config.js /app/config.js
+RUN rm /etc/nginx/sites-enabled/default && ln -s /conf/default /etc/nginx/sites-enabled/default
 ADD run.sh /run.sh
 RUN chmod +x /*.sh
 

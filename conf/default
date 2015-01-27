@@ -1,0 +1,21 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    root /app;
+    index index.html index.htm;
+
+    server_name localhost;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /render {
+        proxy_pass http://graphite-host/render;
+    }
+    location /metrics {
+        proxy_pass http://graphite-host/metrics;
+    }
+
+}
