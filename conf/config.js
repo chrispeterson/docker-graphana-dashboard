@@ -5,6 +5,19 @@ function (Settings) {
       graphite: {
         type: 'graphite',
         url: "",
+      },
+      elasticsearch: {
+        type: 'elasticsearch',
+        url: '',
+        index: 'grafana-dash',
+        grafanaDB: true
+      },
+      influxdb: {
+        type: 'influxdb',
+        url: '',
+        username: "root",
+        password: "root",
+        grafanaDB: true
       }
     },
     default_route: '/dashboard/file/default.json',
