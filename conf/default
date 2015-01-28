@@ -17,5 +17,15 @@ server {
     location /metrics {
         proxy_pass http://graphite-host/metrics;
     }
+    
+    #endpoints to save grafana graphs
+    
+    location /series {
+      proxy_pass http://influx:8086/db/grafana/series;
+    }
+
+    location /grafana-dash {
+        proxy_pass http://elasticsearch:9200/grafana-dash;
+    }
 
 }
